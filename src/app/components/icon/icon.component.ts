@@ -11,6 +11,8 @@ export class IconComponent {
   @Input({ required: true }) name: Icons;
   @Input() width = '22px';
   @Input() height = '22px';
+  @Input() fillSvg = '#FFF';
+  @Input() fillPath = '#FFF';
 
   Icons = Icons;
 }
