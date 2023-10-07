@@ -2,7 +2,13 @@
 
 .videos__list {
   display: grid;
-  // grid-template-columns: repeat(3, minmax(384px, 1fr));
-  grid-template-columns: 1fr;
   gap: 24px;
+}
+
+.grid__style_card {
+  grid-template-columns: repeat(3, minmax(384px, 1fr));
+}
+
+.grid__style_compact {
+  grid-template-columns: 1fr;
 }

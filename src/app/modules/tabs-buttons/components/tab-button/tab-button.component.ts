@@ -8,13 +8,12 @@ import { Icons } from 'src/app/providers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabButtonComponent {
-  @Input() currentTab = 0;
-  @Input() id = 0;
-  @Input() icon: Icons;
+  @Input() currentTab: Icons = Icons.gridStyleCard;
+  @Input() iconName: Icons;
   @Input() width?: string = '';
   @Input() height?: string = '';
   @Input() fillSvg?: string = '';
   @Input() fillPath?: string = '';
 
-  @Output() activeTab = new EventEmitter<number>();
+  @Output() activeTab = new EventEmitter<Icons>();
 }

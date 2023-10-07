@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TabStyle, Icons } from 'src/app/providers';
 
 @Component({
@@ -10,26 +10,28 @@ import { TabStyle, Icons } from 'src/app/providers';
 export class TabsButtonsComponent {
   @Input() tabs: TabStyle[] = [
     {
-      id: 0,
-      icon: Icons.gridStyleCard,
+      iconName: Icons.gridStyleCard,
       width: '22px',
       height: '22px',
       fillPath: '#000',
     },
     {
-      id: 1,
-      icon: Icons.gridStyleCompact,
+      iconName: Icons.gridStyleCompact,
       width: '22px',
       height: '22px',
       fillPath: '#000',
     },
   ];
 
+  @Output() onCurrentTab = new EventEmitter<Icons>();
+
   readonly Icons = Icons;
 
-  currentTab = 0;
+  currentTab: Icons = Icons.gridStyleCard;
 
-  setCurrentTab(id: number) {
-    this.currentTab = id;
+  setCurrentTab(iconName: Icons) {
+    this.currentTab = iconName;
+
+    this.onCurrentTab.emit(iconName);
   }
 }

@@ -8,7 +8,7 @@ import { Icons } from 'src/app/providers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoComponent {
-  @Input() gridStyle: Icons.gridStyleCard | Icons.gridStyleCompact = Icons.gridStyleCompact;
+  @Input() gridStyle: Icons = Icons.gridStyleCompact;
   @Input() previewUrl = '';
   @Input() title = '';
   @Input() createdDate: Date = new Date();

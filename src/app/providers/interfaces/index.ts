@@ -15,8 +15,7 @@ export interface User {
 }
 
 export interface TabStyle {
-  id: number;
-  icon: Icons;
+  iconName: Icons;
   width?: string;
   height?: string;
   fillSvg?: string;
