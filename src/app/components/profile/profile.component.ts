@@ -9,4 +9,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class ProfileComponent {
   @Input() name = 'Eduard';
   @Input() image = 'assets/images/avatar.jpg';
+  @Input() avatarWidth = '32px';
+  @Input() avatarHeight = '32px';
 }

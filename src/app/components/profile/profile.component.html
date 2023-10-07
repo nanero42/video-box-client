@@ -1,4 +1,12 @@
 <div class="profile df aic jcc">
-  <img class="border-radius-50" [attr.src]="image" alt="avatar">
+  <img
+    class="border-radius-50"
+    [attr.src]="image"
+    alt="avatar"
+    [ngStyle]="{
+      'width': avatarWidth,
+      'height': avatarHeight
+    }"
+  >
   <span class="pl-12">{{ name }}</span>
 </div>

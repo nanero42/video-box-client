@@ -4,6 +4,10 @@
   height: 292px;
 }
 
+.video:hover {
+  background-color: var(--color-gray-thin);
+}
+
 .video__img {
   width: 100%;
   height: 216px;
