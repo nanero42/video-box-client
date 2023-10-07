@@ -81,6 +81,10 @@
   padding-bottom: 12px;
 }
 
+.pb-20 {
+  padding-bottom: 20px;
+}
+
 .pb-32 {
   padding-bottom: 32px;
 }
@@ -101,6 +105,10 @@
   padding-top: 12px;
 }
 
+.pt-20 {
+  padding-top: 20px;
+}
+
 .pt-32 {
   padding-top: 32px;
 }
@@ -119,4 +127,9 @@
 // text
 .text-wrap-nowrap {
   text-wrap: nowrap;
+}
+
+// gap
+.gap-24 {
+  gap: 24px;
 }

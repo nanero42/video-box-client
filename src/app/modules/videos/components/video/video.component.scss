@@ -1,8 +1,18 @@
 :host { display: contents; }
 
+.video__card:hover {
+  background-color: var(--color-gray-thin);
+}
+
 .video__compact {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.video__compact:hover {
+  background-color: var(--color-gray-thin);
 }
 
 .video__compact-container {
@@ -87,7 +97,8 @@
   }
 
   .video__title_compact {
-    display: flex;justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .video__img_compact {
