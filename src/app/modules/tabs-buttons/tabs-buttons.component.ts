@@ -18,7 +18,7 @@ export class TabsButtonsComponent {
     },
     {
       id: 1,
-      icon: Icons.gridCompact,
+      icon: Icons.gridStyleCompact,
       width: '22px',
       height: '22px',
       fillPath: '#000',
