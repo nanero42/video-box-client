@@ -3,7 +3,7 @@
   <div>
     <div class="video__title">{{ title }}</div>
     <div class="aic jcsb">
-      <div class="video__date">{{ createdDate }}</div>
+      <div class="video__date">{{ createdDate | date:'MM/dd/yyyy' }}</div>
       <div class="video__owner">
         <app-profile />
       </div>
