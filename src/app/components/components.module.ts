@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header';
 import { IconComponent } from './icon';
+import { ProfileComponent } from './profile';
 
 
 
@@ -9,6 +10,7 @@ import { IconComponent } from './icon';
   declarations: [
     HeaderComponent,
     IconComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule
@@ -16,6 +18,7 @@ import { IconComponent } from './icon';
   exports: [
     HeaderComponent,
     IconComponent,
+    ProfileComponent,
   ]
 })
 export class ComponentsModule { }
