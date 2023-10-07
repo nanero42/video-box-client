@@ -1,0 +1,43 @@
+// truncate ellipsis text
+.ellipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* start showing ellipsis when 2rd line is reached */
+  white-space: pre-wrap; /* let the text wrap preserving spaces */
+}
+
+// font-size
+.font-size_ultra-small {
+  font-size: 14px;
+}
+
+.font-size_mega-small {
+  font-size: 16px;
+}
+
+.font-size_extra-small {
+  font-size: 18px;
+}
+
+.font-size_small {
+  font-size: 22px;
+}
+
+.font-size_big {
+  font-size: 26px;
+}
+
+.font-size_extra-big {
+  font-size: 30px;
+}
+
+.font-size_ultra-big {
+  font-size: 34px;
+}
+
+// containers
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
