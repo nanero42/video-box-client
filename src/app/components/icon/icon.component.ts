@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Icons } from 'src/app/providers';
 
 @Component({
   selector: 'app-icon',
@@ -7,5 +8,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconComponent {
+  @Input({ required: true }) name: Icons;
+  @Input() width = '22px';
+  @Input() height = '22px';
 
+  Icons = Icons;
 }
