@@ -5,12 +5,3 @@
   grid-template-columns: repeat(3, minmax(384px, 1fr));
   gap: 24px;
 }
-
-.grid__action {
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.grid__action:hover {
-  background-color: var(--color-gray-extra-light);
-}
