@@ -1,4 +1,4 @@
-<div *ngIf="gridStyle === Icons.gridStyleCard" class="video">
+<div *ngIf="gridStyle === Icons.gridStyleCard">
   <img class="video__img" [attr.src]="previewUrl" alt="video">
   <div>
     <div class="video__title truncate__vertical-one-line">{{ title }}</div>
@@ -11,16 +11,13 @@
   </div>
 </div>
 
-<div class="jcsb" *ngIf="gridStyle === Icons.gridStyleCompact">
-  <div class="df">
-    <img class="vide__img_compact" [attr.src]="previewUrl" alt="video">
-    <div class="pl-20 df aic jcc video__title_compact truncate__vertical-one-line pr-20">{{ title }}</div>
+<div class="video__compact" *ngIf="gridStyle === Icons.gridStyleCompact">
+  <img class="video__img_compact" [attr.src]="previewUrl" alt="video">
+
+  <div class="video__compact-container">
+    <div class="pl-20 df aic jcc text-wrap-nowrap video__title_compact truncate__vertical-one-line pr-20">{{ title }}</div>
+    <div class="df aic jcfe video__date_compact pr-20">{{ createdDate | date:'MM/dd/yyyy' }}</div>
+    <div class="df aic jcc video__owner pr-20"><app-profile [avatarWidth]="'24px'" [avatarHeight]="'24px'" /></div>
   </div>
 
-  <div class="df">
-    <div class="df aic jcc video__date_compact pr-20">{{ createdDate | date:'MM/dd/yyyy' }}</div>
-    <div class="df aic jcc video__owner">
-      <app-profile [avatarWidth]="'24px'" [avatarHeight]="'24px'" />
-    </div>
-  </div>
 </div>
