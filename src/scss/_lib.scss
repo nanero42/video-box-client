@@ -41,3 +41,37 @@
   max-width: 1600px;
   margin: 0 auto;
 }
+
+// flex
+.df {
+  display: flex;
+}
+
+.jcc {
+  display: flex;
+  justify-content: center;
+}
+
+.jcsb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.aic {
+  display: flex;
+  align-items: center;
+}
+
+// padding / margin
+.pr-20 {
+  padding-right: 20px;
+}
+
+.pl-20 {
+  padding-left: 20px;
+}
+
+// width / height
+.h-100 {
+  height: 100%;
+}
