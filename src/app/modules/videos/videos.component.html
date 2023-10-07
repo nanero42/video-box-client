@@ -1,16 +1,10 @@
 <div class="videos">
 
-  <div *ngFor="let video of videos" class="video">
-    <img class="video__img" [attr.src]="video.previewUrl" alt="video">
-    <div>
-      <div class="video__title">{{ video.title }}</div>
-      <div class="aic jcsb">
-        <div class="video__date">{{ video.createdDate }}</div>
-        <div class="video__owner">
-          <app-profile />
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-video
+    *ngFor="let video of videos"
+    [previewUrl]="video.previewUrl"
+    [title]="video.title"
+    [createdDate]="video.createdDate"
+  />
 
 </div>
