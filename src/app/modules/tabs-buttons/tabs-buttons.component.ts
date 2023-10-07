@@ -11,7 +11,7 @@ export class TabsButtonsComponent {
   @Input() tabs: TabStyle[] = [
     {
       id: 0,
-      icon: Icons.gridCard,
+      icon: Icons.gridStyleCard,
       width: '22px',
       height: '22px',
       fillPath: '#000',

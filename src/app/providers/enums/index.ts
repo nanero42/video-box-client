@@ -1,5 +1,5 @@
 export enum Icons {
   logo = 'logo',
-  gridCard = 'gridCard',
+  gridStyleCard = 'gridStyleCard',
   gridCompact = 'gridCompact',
 }
