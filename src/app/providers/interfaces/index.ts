@@ -14,7 +14,7 @@ export interface User {
   pictureUrl: string;
 }
 
-export interface GridTab {
+export interface TabStyle {
   id: number;
   icon: Icons;
   width?: string;

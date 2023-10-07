@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { GridTab, Icons } from 'src/app/providers';
+import { TabStyle, Icons } from 'src/app/providers';
 
 @Component({
   selector: 'app-tabs-buttons',
@@ -8,7 +8,7 @@ import { GridTab, Icons } from 'src/app/providers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabsButtonsComponent {
-  @Input() tabs: GridTab[] = [
+  @Input() tabs: TabStyle[] = [
     {
       id: 0,
       icon: Icons.gridCard,

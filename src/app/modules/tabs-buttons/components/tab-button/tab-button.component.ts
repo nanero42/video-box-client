@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { GridTab, Icons } from 'src/app/providers';
+import { Icons } from 'src/app/providers';
 
 @Component({
   selector: 'app-tab-button',
