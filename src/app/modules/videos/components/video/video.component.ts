@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Icons } from 'src/app/providers';
 
 @Component({
   selector: 'app-video',
@@ -7,7 +8,10 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoComponent {
+  @Input() gridStyle: Icons.gridStyleCard | Icons.gridStyleCompact = Icons.gridStyleCompact;
   @Input() previewUrl = '';
   @Input() title = '';
   @Input() createdDate: Date = new Date();
+
+  readonly Icons = Icons;
 }

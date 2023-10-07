@@ -13,6 +13,12 @@
   height: 216px;
 }
 
+.vide__img_compact {
+  border-radius: 4px;
+  width: 96px;
+  height: 54px;
+}
+
 .video__title {
   padding-top: 6px;
   padding-bottom: 6px;
@@ -22,10 +28,23 @@
   line-height: 26px;
 }
 
+.video__title_compact {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+}
+
 .video__date {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-gray-medium);
+}
+
+.video__date_compact {
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
