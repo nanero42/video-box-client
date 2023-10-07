@@ -1,12 +1,1 @@
-.tabs__button {
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.tabs__button:hover {
-  background-color: var(--color-gray-extra-light);
-}
-
-.tabs__button_active {
-  background-color: var(--color-gray-extra-light);
-}
+:host { display: contents; }

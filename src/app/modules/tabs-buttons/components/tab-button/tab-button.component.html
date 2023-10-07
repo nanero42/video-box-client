@@ -1,0 +1,13 @@
+<div
+  class="tabs__button pr-26 pl-26 pt-12 pb-12"
+  [ngClass]="{'tabs__button_active': currentTab === id}"
+  (click)="activeTab.emit(id)"
+>
+  <app-icon
+    [name]="icon"
+    [width]="width"
+    [height]="height"
+    [fillSvg]="fillSvg"
+    [fillPath]="fillPath"
+  />
+</div>

@@ -1,16 +1,13 @@
 <div class="pt-32 pb-32 jcfe">
-  <div
+  <app-tab-button
     *ngFor="let tab of tabs"
-    class="tabs__button pr-26 pl-26 pt-12 pb-12"
-    [ngClass]="{'tabs__button_active': activeTab === tab.id}"
-    (click)="setActiveTab(tab.id)"
-  >
-    <app-icon
-      [name]="tab.icon"
-      [width]="tab.width"
-      [height]="tab.height"
-      [fillSvg]="tab.fillSvg"
-      [fillPath]="tab.fillPath"
-    />
-  </div>
+    [currentTab]="currentTab"
+    [id]="tab.id"
+    [icon]="tab.icon"
+    [width]="tab.width"
+    [height]="tab.height"
+    [fillSvg]="tab.fillSvg"
+    [fillPath]="tab.fillPath"
+    (activeTab)="setCurrentTab($event)"
+  />
 </div>

@@ -27,9 +27,9 @@ export class TabsButtonsComponent {
 
   readonly Icons = Icons;
 
-  activeTab = 0;
+  currentTab = 0;
 
-  setActiveTab(id: number) {
-    this.activeTab = id;
+  setCurrentTab(id: number) {
+    this.currentTab = id;
   }
 }
