@@ -7,5 +7,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GridButtonsComponent {
+  activeTab = 1;
 
+  setActiveTab(id: number) {
+    this.activeTab = id;
+  }
 }

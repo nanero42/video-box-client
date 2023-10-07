@@ -1,8 +1,12 @@
-.grid__button {
+.grid__tab {
   border-radius: 10px;
   cursor: pointer;
 }
 
-.grid__button:hover {
+.grid__tab:hover {
+  background-color: var(--color-gray-extra-light);
+}
+
+.grid__tab_active {
   background-color: var(--color-gray-extra-light);
 }

@@ -1,5 +1,9 @@
 <div class="pt-32 pb-32 jcfe">
-  <div class="grid__button pr-26 pl-26 pt-12 pb-12">
+  <div
+    class="grid__tab pr-26 pl-26 pt-12 pb-12"
+    [ngClass]="{'grid__tab_active': activeTab === 1}"
+    (click)="setActiveTab(1)"
+  >
     <app-icon
       #icon
       [name]="icon.Icons.gridCard"
@@ -9,7 +13,11 @@
     />
   </div>
 
-  <div class="grid__button pr-26 pl-26 pt-12 pb-12">
+  <div
+    class="grid__tab pr-26 pl-26 pt-12 pb-12"
+    [ngClass]="{'grid__tab_active': activeTab === 2}"
+    (click)="setActiveTab(2)"
+  >
     <app-icon
       #icon
       [name]="icon.Icons.gridCompact"
