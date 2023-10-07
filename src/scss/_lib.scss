@@ -1,9 +1,9 @@
 // truncate ellipsis text
-.ellipsis {
+.truncate__vertical-one-line {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* start showing ellipsis when 2rd line is reached */
+  -webkit-line-clamp: 1; /* start showing ellipsis when 2rd line is reached */
   white-space: pre-wrap; /* let the text wrap preserving spaces */
 }
 
@@ -114,4 +114,9 @@
 
 .border-radius-50 {
   border-radius: 50%;
+}
+
+// text
+.text-wrap-no-wrap {
+  text-wrap: nowrap;
 }

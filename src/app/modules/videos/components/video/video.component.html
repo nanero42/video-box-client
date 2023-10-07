@@ -1,7 +1,7 @@
 <div *ngIf="gridStyle === Icons.gridStyleCard" class="video">
   <img class="video__img" [attr.src]="previewUrl" alt="video">
   <div>
-    <div class="video__title">{{ title }}</div>
+    <div class="video__title truncate__vertical-one-line">{{ title }}</div>
     <div class="aic jcsb pb-12">
       <div class="video__date">{{ createdDate | date:'MM/dd/yyyy' }}</div>
       <div class="video__owner">
@@ -13,8 +13,8 @@
 
 <div class="jcsb" *ngIf="gridStyle === Icons.gridStyleCompact">
   <div class="df">
-    <img class="vide__img_compact" [attr.src]="previewUrl" alt="video" >
-    <div class="pl-20 df aic jcc video__title_compact pr-20">{{ title }}</div>
+    <img class="vide__img_compact" [attr.src]="previewUrl" alt="video">
+    <div class="pl-20 df aic jcc video__title_compact truncate__vertical-one-line pr-20">{{ title }}</div>
   </div>
 
   <div class="df">
