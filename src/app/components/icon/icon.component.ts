@@ -9,10 +9,10 @@ import { Icons } from 'src/app/providers';
 })
 export class IconComponent {
   @Input({ required: true }) name: Icons;
-  @Input() width = '22px';
-  @Input() height = '22px';
-  @Input() fillSvg = '#FFF';
-  @Input() fillPath = '#FFF';
+  @Input() width?: string = '22px';
+  @Input() height?: string = '22px';
+  @Input() fillSvg?: string = '#FFF';
+  @Input() fillPath?: string = '#FFF';
 
   Icons = Icons;
 }

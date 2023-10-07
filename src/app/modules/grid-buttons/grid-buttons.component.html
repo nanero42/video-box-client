@@ -1,29 +1,16 @@
 <div class="pt-32 pb-32 jcfe">
   <div
+    *ngFor="let tab of tabs"
     class="grid__tab pr-26 pl-26 pt-12 pb-12"
-    [ngClass]="{'grid__tab_active': activeTab === 1}"
-    (click)="setActiveTab(1)"
+    [ngClass]="{'grid__tab_active': activeTab === tab.id}"
+    (click)="setActiveTab(tab.id)"
   >
     <app-icon
-      #icon
-      [name]="icon.Icons.gridCard"
-      [width]="'22px'"
-      [height]="'22px'"
-      [fillPath]="'#000'"
-    />
-  </div>
-
-  <div
-    class="grid__tab pr-26 pl-26 pt-12 pb-12"
-    [ngClass]="{'grid__tab_active': activeTab === 2}"
-    (click)="setActiveTab(2)"
-  >
-    <app-icon
-      #icon
-      [name]="icon.Icons.gridCompact"
-      [width]="'22px'"
-      [height]="'22px'"
-      [fillPath]="'#000'"
+      [name]="tab.icon"
+      [width]="tab.width"
+      [height]="tab.height"
+      [fillSvg]="tab.fillSvg"
+      [fillPath]="tab.fillPath"
     />
   </div>
 </div>
