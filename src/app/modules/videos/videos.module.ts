@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { VideosComponent } from './videos.component';
 import { ComponentsModule } from 'src/app/components';
 import { VideoComponent } from './components/video/video.component';
-import { GridButtonsModule } from '../grid-buttons';
+import { TabsButtonsModule } from '../tabs-buttons';
 
 
 
@@ -15,7 +15,7 @@ import { GridButtonsModule } from '../grid-buttons';
   imports: [
     CommonModule,
     ComponentsModule,
-    GridButtonsModule,
+    TabsButtonsModule,
   ],
   exports: [
     VideosComponent,

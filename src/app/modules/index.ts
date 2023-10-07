@@ -1,2 +1,2 @@
 export * from './videos';
-export * from './grid-buttons';
+export * from './tabs-buttons';

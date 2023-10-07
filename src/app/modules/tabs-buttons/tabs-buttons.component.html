@@ -1,8 +1,8 @@
 <div class="pt-32 pb-32 jcfe">
   <div
     *ngFor="let tab of tabs"
-    class="grid__tab pr-26 pl-26 pt-12 pb-12"
-    [ngClass]="{'grid__tab_active': activeTab === tab.id}"
+    class="tabs__button pr-26 pl-26 pt-12 pb-12"
+    [ngClass]="{'tabs__button_active': activeTab === tab.id}"
     (click)="setActiveTab(tab.id)"
   >
     <app-icon

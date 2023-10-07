@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { GridTab, Icons } from 'src/app/providers';
 
 @Component({
-  selector: 'app-grid-buttons',
-  templateUrl: './grid-buttons.component.html',
-  styleUrls: ['./grid-buttons.component.scss'],
+  selector: 'app-tabs-buttons',
+  templateUrl: './tabs-buttons.component.html',
+  styleUrls: ['./tabs-buttons.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GridButtonsComponent {
+export class TabsButtonsComponent {
   @Input() tabs: GridTab[] = [
     {
       id: 0,
