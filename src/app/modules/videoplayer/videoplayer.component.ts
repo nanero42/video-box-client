@@ -40,9 +40,6 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
           this.duration = 0;
         }
 
-        console.log(this.progress);
-        console.log(this.duration);
-
         this.cdr.detectChanges();
       }),
     ).subscribe();
