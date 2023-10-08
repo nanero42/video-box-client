@@ -1,0 +1,12 @@
+<div class="profile df aic jcc">
+  <img
+    class="border-radius-50"
+    [attr.src]="(user$ | async)?.pictureUrl || 'assets/images/avatar.jpg'"
+    alt="avatar"
+    [ngStyle]="{
+      'width': avatarWidth,
+      'height': avatarHeight
+    }"
+  >
+  <span class="text-wrap-nowrap pl-12">{{ (user$ | async)?.name || 'No name' }}</span>
+</div>

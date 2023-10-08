@@ -1,0 +1,20 @@
+<div>
+  <app-tabs-buttons (onCurrentTab)="setCurrentTab($event)"/>
+
+  <div
+    class="videos__list"
+    [ngClass]="{
+      'grid__style_card': currentTab === Icons.gridStyleCard,
+      'gap-24': currentTab === Icons.gridStyleCard,
+      'grid__style_compact': currentTab === Icons.gridStyleCompact
+    }"
+  >
+    <app-video
+      *ngFor="let video of videos"
+      [gridStyle]="currentTab"
+      [previewUrl]="video.previewUrl"
+      [title]="video.title"
+      [createdDate]="video.createdDate"
+    />
+  </div>
+</div>
