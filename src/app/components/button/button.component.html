@@ -1,0 +1,17 @@
+<button
+  class="button df cup"
+  [ngClass]="{
+    'button__primary': category === ButtonCategory.primary,
+    'button__secondary-with-icon': category === ButtonCategory.secondaryWithIcon && icon
+  }"
+>
+  <span *ngIf="icon" class="aic pr-12">
+    <app-icon
+      #icon
+      [name]="icon.Icons.gridStyleCard"
+      [fillSvg]="fillSvg"
+    />
+  </span>
+
+  <span>{{ title }}</span>
+</button>

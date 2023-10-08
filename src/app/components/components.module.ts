@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header';
 import { IconComponent } from './icon';
 import { ProfileComponent } from './profile';
+import { ButtonComponent } from './button';
 
 
 
@@ -11,6 +12,7 @@ import { ProfileComponent } from './profile';
     HeaderComponent,
     IconComponent,
     ProfileComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule
@@ -19,6 +21,7 @@ import { ProfileComponent } from './profile';
     HeaderComponent,
     IconComponent,
     ProfileComponent,
-  ]
+    ButtonComponent,
+  ],
 })
 export class ComponentsModule { }

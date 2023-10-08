@@ -3,3 +3,8 @@ export enum Icons {
   gridStyleCard = 'gridStyleCard',
   gridStyleCompact = 'gridStyleCompact',
 }
+
+export enum ButtonCategory {
+  primary = 'primary',
+  secondaryWithIcon = 'secondaryWithIcon',
+}
