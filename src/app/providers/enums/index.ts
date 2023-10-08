@@ -3,7 +3,6 @@ export enum Icons {
   gridStyleCard = 'gridStyleCard',
   gridStyleCompact = 'gridStyleCompact',
   play = 'play',
-  circle = 'circle',
   pause = 'pause',
 }
 

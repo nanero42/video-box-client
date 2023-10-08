@@ -11,6 +11,13 @@
           class="videoplayer__controls-line videoplayer__controls-line_filled"
           [style.width.%]="progress / duration * 100"
         ></div>
+
+        <div
+          *ngIf="progress && duration"
+          class="videoplayer__controls-circle"
+          [style.left.%]="progress / duration * 100"
+          [ngStyle]="{'transform': 'translateX(-8px)'}"
+        ></div>
       </div>
     </div>
 
