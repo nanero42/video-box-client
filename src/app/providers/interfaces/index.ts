@@ -21,3 +21,19 @@ export interface TabStyle {
   fillSvg?: string;
   fillPath?: string;
 }
+
+export interface Video {
+  id: string
+  title: string
+  description: string
+  createdDate: Date
+  author: Author
+  url: string
+  previewUrl: string
+}
+
+export interface Author {
+  id: string
+  name: string
+  pictureUrl: string
+}

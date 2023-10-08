@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
 import { Subject, fromEvent, takeUntil, tap } from 'rxjs';
 import { Icons, secondsToHHMMSS } from 'src/app/providers';
 
@@ -10,6 +10,8 @@ import { Icons, secondsToHHMMSS } from 'src/app/providers';
 })
 export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   @ViewChild('video') video: ElementRef<HTMLVideoElement>;
+
+  @Input() url?: string = '';
 
   readonly Icons = Icons;
 

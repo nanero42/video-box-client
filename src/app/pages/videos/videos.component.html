@@ -1,12 +1,17 @@
 <app-header />
 
-<div class="container-min-max-384-800">
+<div
+  class="container-min-max-384-800"
+  *ngIf="{
+    item: item$ | async
+  } as state"
+>
   <div class="videos__container df">
     <app-input />
     <app-button [title]="'Save'" />
   </div>
 
-  <app-videoplayer />
+  <app-videoplayer [url]="state.item?.url" />
 
   <div class="pt-16 df jcsb">
     <div class="df">
