@@ -7,4 +7,24 @@
   </div>
 
   <app-videoplayer />
+
+  <div class="pt-16 df">
+    <app-button
+      #button
+      [category]="button.ButtonCategory.secondaryWithIcon"
+      [icon]="button.Icons.camera"
+      [title]="'Snapshot'"
+      [fillPath]="'#000'"
+    />
+
+    <div class="pr-16"></div>
+
+    <app-button
+      #button
+      [category]="button.ButtonCategory.secondaryWithIcon"
+      [icon]="button.Icons.star"
+      [title]="'Star'"
+      [fillPath]="'#000'"
+    />
+  </div>
 </div>

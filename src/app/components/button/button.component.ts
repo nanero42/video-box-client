@@ -11,7 +11,9 @@ export class ButtonComponent {
   @Input() title = 'No title';
   @Input() icon: Icons;
   @Input() fillSvg = '';
+  @Input() fillPath = '';
   @Input() category: ButtonCategory = ButtonCategory.primary;
 
   readonly ButtonCategory = ButtonCategory;
+  readonly Icons = Icons;
 }

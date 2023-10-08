@@ -4,6 +4,8 @@ export enum Icons {
   gridStyleCompact = 'gridStyleCompact',
   play = 'play',
   pause = 'pause',
+  camera = 'camera',
+  star = 'star',
 }
 
 export enum ButtonCategory {
