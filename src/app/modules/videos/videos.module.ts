@@ -4,6 +4,7 @@ import { VideosComponent } from './videos.component';
 import { ComponentsModule } from 'src/app/components';
 import { VideoComponent } from './components/video/video.component';
 import { TabsButtonsModule } from '../tabs-buttons';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -16,6 +17,7 @@ import { TabsButtonsModule } from '../tabs-buttons';
     CommonModule,
     ComponentsModule,
     TabsButtonsModule,
+    RouterModule,
   ],
   exports: [
     VideosComponent,

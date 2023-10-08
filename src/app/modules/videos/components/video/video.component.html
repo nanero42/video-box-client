@@ -1,4 +1,8 @@
-<div class="video__card cup" *ngIf="gridStyle === Icons.gridStyleCard">
+<a
+  *ngIf="gridStyle === Icons.gridStyleCard"
+  routerLink="./videos/{{id}}"
+  class="video__card cup"
+>
   <img class="video__img" [attr.src]="previewUrl" alt="video">
   <div>
     <div class="video__title truncate__vertical-one-line">{{ title }}</div>
@@ -9,9 +13,13 @@
       </div>
     </div>
   </div>
-</div>
+</a>
 
-<div class="video__compact cup pt-20 pr-20 pb-20 pl-20" *ngIf="gridStyle === Icons.gridStyleCompact">
+<a
+  *ngIf="gridStyle === Icons.gridStyleCompact"
+  routerLink="./videos/{{id}}"
+  class="video__compact cup pt-20 pr-20 pb-20 pl-20"
+>
   <img class="video__img_compact" [attr.src]="previewUrl" alt="video">
 
   <div class="video__compact-container">
@@ -20,4 +28,4 @@
     <div class="df aic jcc video__owner pr-20"><app-profile [avatarWidth]="'24px'" [avatarHeight]="'24px'" /></div>
   </div>
 
-</div>
+</a>

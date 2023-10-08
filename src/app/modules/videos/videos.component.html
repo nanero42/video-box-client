@@ -12,6 +12,7 @@
     <app-video
       *ngFor="let video of videos"
       [gridStyle]="currentTab"
+      [id]="video.id"
       [previewUrl]="video.previewUrl"
       [title]="video.title"
       [createdDate]="video.createdDate"
