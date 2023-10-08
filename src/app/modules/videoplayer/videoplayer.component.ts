@@ -11,6 +11,7 @@ import { Icons, KeyboardCode, secondsToHHMMSS } from 'src/app/providers';
 })
 export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   @ViewChild('video') video: ElementRef<HTMLVideoElement>;
+  @ViewChild('line') line: ElementRef<HTMLDivElement>;
 
   @Input() url?: string = '';
 
@@ -31,10 +32,11 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.initVideoDuration();
-    this.initVideoProgressAndDuration();
+    this.initVideoProgress();
     this.toggleVideoOnSpacePressed();
     this.backVideoOnFiveSecond();
     this.forwardVideoOnFiveSecond();
+    this.rewindVideoToPoint();
   }
 
   ngOnDestroy(): void {
@@ -85,6 +87,7 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
     fromEvent(this.video.nativeElement, 'canplay').pipe(
       takeUntil(this.destroyStream$),
       tap(() => {
+        this.duration = this.video.nativeElement.duration;
         this.durationHHMMSS = secondsToHHMMSS(this.video.nativeElement.duration);
 
         this.cdr.detectChanges();
@@ -92,7 +95,7 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
     ).subscribe();
   }
 
-  private initVideoProgressAndDuration() {
+  private initVideoProgress() {
     fromEvent(this.video.nativeElement, 'timeupdate').pipe(
       takeUntil(this.destroyStream$),
       tap(({ target }) => {
@@ -100,7 +103,6 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
 
         if (target instanceof HTMLMediaElement) {
           this.progress = target.currentTime;
-          this.duration = target.duration;
         }
 
         this.progressHHMMSS = secondsToHHMMSS(this.progress);
@@ -113,6 +115,24 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
 
         this.cdr.detectChanges();
       }),
+    ).subscribe();
+  }
+
+  private rewindVideoToPoint() {
+    fromEvent<PointerEvent>(this.line.nativeElement, 'click').pipe(
+      takeUntil(this.destroyStream$),
+      tap((click) => {
+        const xPoint = click.clientX;
+        const lineDimensions = this.line.nativeElement.getBoundingClientRect();
+        const lineWidth = lineDimensions.right - lineDimensions.left;
+        const distanceFromLeftScreenSideToLineLeftSide = lineDimensions.left;
+        const xPointInsideLine = xPoint - distanceFromLeftScreenSideToLineLeftSide;
+        const xPointInsideLineInt = xPointInsideLine;
+
+        this.video.nativeElement.currentTime = xPointInsideLineInt / lineWidth * this.duration;
+
+        this.cdr.detectChanges();
+      })
     ).subscribe();
   }
 
