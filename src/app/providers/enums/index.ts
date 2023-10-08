@@ -12,3 +12,7 @@ export enum ButtonCategory {
   primary = 'primary',
   secondaryWithIcon = 'secondaryWithIcon',
 }
+
+export enum KeyboardCode {
+  Space = 'Space',
+}

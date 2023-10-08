@@ -1,6 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, Input, OnDestroy, ViewChild } from '@angular/core';
 import { Subject, fromEvent, takeUntil, tap } from 'rxjs';
-import { Icons, secondsToHHMMSS } from 'src/app/providers';
+import { Icons, KeyboardCode, secondsToHHMMSS } from 'src/app/providers';
 
 @Component({
   selector: 'app-videoplayer',
@@ -23,11 +24,15 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   duration = 0;
   durationHHMMSS = '00:00:00';
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    @Inject(DOCUMENT) private document: Document,
+  ) {}
 
   ngAfterViewInit(): void {
-    this.canPlay();
-    this.watchVideo();
+    this.initVideoDuration();
+    this.initVideoProgressAndDuration();
+    this.toggleVideoOnSpacePressed();
   }
 
   ngOnDestroy(): void {
@@ -35,7 +40,18 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
     this.destroyStream$.complete();
   }
 
-  private canPlay() {
+  private toggleVideoOnSpacePressed() {
+    fromEvent<KeyboardEvent>(this.document, 'keydown').pipe(
+      takeUntil(this.destroyStream$),
+      tap(({ code }) => {
+        if (code === KeyboardCode.Space) {
+          this.toggleVideo();
+        }
+      }),
+    ).subscribe();
+  }
+
+  private initVideoDuration() {
     fromEvent(this.video.nativeElement, 'canplay').pipe(
       takeUntil(this.destroyStream$),
       tap(() => {
@@ -46,7 +62,7 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
     ).subscribe();
   }
 
-  private watchVideo() {
+  private initVideoProgressAndDuration() {
     fromEvent(this.video.nativeElement, 'timeupdate').pipe(
       takeUntil(this.destroyStream$),
       tap(({ target }) => {
