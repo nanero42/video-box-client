@@ -33,6 +33,8 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
     this.initVideoDuration();
     this.initVideoProgressAndDuration();
     this.toggleVideoOnSpacePressed();
+    this.backVideoOnFiveSecond();
+    this.forwardVideoOnFiveSecond();
   }
 
   ngOnDestroy(): void {
@@ -46,6 +48,34 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
       tap(({ code }) => {
         if (code === KeyboardCode.Space) {
           this.toggleVideo();
+        }
+      }),
+    ).subscribe();
+  }
+
+  private backVideoOnFiveSecond() {
+    fromEvent<KeyboardEvent>(this.document, 'keydown').pipe(
+      takeUntil(this.destroyStream$),
+      tap(({ code }) => {
+        if (code === KeyboardCode.ArrowLeft) {
+          const video = this.video.nativeElement as HTMLMediaElement;
+          video.currentTime -= 5;
+
+          this.cdr.detectChanges();
+        }
+      }),
+    ).subscribe();
+  }
+
+  private forwardVideoOnFiveSecond() {
+    fromEvent<KeyboardEvent>(this.document, 'keydown').pipe(
+      takeUntil(this.destroyStream$),
+      tap(({ code }) => {
+        if (code === KeyboardCode.ArrowRight) {
+          const video = this.video.nativeElement as HTMLMediaElement;
+          video.currentTime += 5;
+
+          this.cdr.detectChanges();
         }
       }),
     ).subscribe();

@@ -15,4 +15,6 @@ export enum ButtonCategory {
 
 export enum KeyboardCode {
   Space = 'Space',
+  ArrowLeft = 'ArrowLeft',
+  ArrowRight = 'ArrowRight',
 }
