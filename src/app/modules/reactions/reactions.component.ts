@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Reaction } from 'src/app/providers';
 
 @Component({
@@ -9,4 +9,6 @@ import { Reaction } from 'src/app/providers';
 })
 export class ReactionsComponent {
   @Input() reactions: Reaction[] | null;
+
+  @Output() onVideoTimeframe = new EventEmitter<number>();
 }

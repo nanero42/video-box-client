@@ -12,7 +12,10 @@
     <app-button [title]="'Save'" />
   </div>
 
-  <app-videoplayer [url]="state.item?.url" />
+  <app-videoplayer
+    [url]="state.item?.url"
+    [videoTimeframe]="videoTimeframe"
+  />
 
   <div class="pt-16 df jcsb">
     <div class="df">
@@ -42,5 +45,8 @@
 
   <div class="pt-40"></div>
 
-  <app-reactions [reactions]="reactionItem$ | async" />
+  <app-reactions
+    [reactions]="reactionItem$ | async"
+    (onVideoTimeframe)="videoTimeframe = $event"
+  />
 </div>

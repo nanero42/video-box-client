@@ -14,6 +14,7 @@
       [timeframe]="item.timeframe * 10"
       [imageUrl]="item.imageUrl"
       [type]="item.type"
+      (click)="onVideoTimeframe.emit(item.timeframe)"
     />
   </ul>
 </div>

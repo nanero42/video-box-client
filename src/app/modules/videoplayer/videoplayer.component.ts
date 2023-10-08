@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, Input, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, Inject, Input, OnDestroy, ViewChild } from '@angular/core';
 import { Subject, fromEvent, takeUntil, tap } from 'rxjs';
 import { Icons, KeyboardCode, secondsToHHMMSS } from 'src/app/providers';
 
@@ -9,11 +9,12 @@ import { Icons, KeyboardCode, secondsToHHMMSS } from 'src/app/providers';
   styleUrls: ['./videoplayer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VideoplayerComponent implements AfterViewInit, OnDestroy {
+export class VideoplayerComponent implements DoCheck, AfterViewInit, OnDestroy {
   @ViewChild('video') video: ElementRef<HTMLVideoElement>;
   @ViewChild('line') line: ElementRef<HTMLDivElement>;
 
   @Input() url?: string = '';
+  @Input() videoTimeframe = 0;
 
   readonly Icons = Icons;
 
@@ -29,6 +30,18 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     @Inject(DOCUMENT) private document: Document,
   ) {}
+
+  ngDoCheck(): void {
+    const video = this?.video?.nativeElement;
+
+    if (video) {
+      const timeframeInSeconds = this.videoTimeframe * 10;
+
+      video.currentTime = timeframeInSeconds;
+      this.progress = timeframeInSeconds;
+      this.progressHHMMSS = secondsToHHMMSS(timeframeInSeconds);
+    }
+  }
 
   ngAfterViewInit(): void {
     this.initVideoDuration();

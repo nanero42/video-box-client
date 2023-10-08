@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Author, ReactionType, secondsToHHMMSS } from 'src/app/providers';
 
 @Component({
@@ -7,7 +7,7 @@ import { Author, ReactionType, secondsToHHMMSS } from 'src/app/providers';
   styleUrls: ['./reaction.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ReactionComponent implements OnChanges {
+export class ReactionComponent {
   @Input() id = '';
   @Input() videoId = '';
   @Input() author: Author;
@@ -18,10 +18,4 @@ export class ReactionComponent implements OnChanges {
   @Input() type = ReactionType.star;
 
   readonly secondsToHHMMSS = secondsToHHMMSS;
-
-  ngOnChanges(): void {
-    console.log(this.timeframe);
-
-    console.log(secondsToHHMMSS(this.timeframe));
-  }
 }
