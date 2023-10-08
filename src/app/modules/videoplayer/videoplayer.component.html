@@ -1,6 +1,6 @@
 <div class="pt-24 por">
   <video #video class="videoplayer">
-    <source src="https://res.cloudinary.com/ifeomaimoh/video/upload/v1650352188/production.mp4" type="video/mp4" >
+    <source src="https://rr3---sn-4g5lznlz.googlevideo.com/videoplayback?expire=1696802573&ei=rdIiZe--MOqWv_IPq-u7wAY&ip=86.106.74.117&id=o-AG4Du5tFp9wHZ69zCQvg8ZfwIWtiXsARqGyL2PoAv8yo&itag=18&source=youtube&requiressl=yes&pcm2=no&spc=UWF9f8H3rEA--34kp4BRTQrg5ouHYNo&vprv=1&svpuc=1&mime=video%2Fmp4&gir=yes&clen=151158470&ratebypass=yes&dur=5631.535&lmt=1683457845402198&fexp=24007246,24350018&beids=24350018&c=ANDROID&txp=5319224&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cpcm2%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AGM4YrMwRQIhAONwNv_RGbKQP7cz9zIPAGZ-gfYr7GydH1nqWMkX8u0rAiA5_DU4ZlWpNpM1hFxXh-XN-zVI_CikS78gzqiMyoJrxg%3D%3D&title=%D0%A1%D0%BC%D0%BE%D1%82%D1%80%D0%B8%D0%BC%20Angular%2016%20c%20%F0%9F%A6%8A%3A%20Signals%2C%20%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F%20%D1%80%D0%B5%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C%2C%20takeUntilDestroyed%2C%20%D1%80%D0%B0%D0%B7%D0%BD%D0%BE%D0%B5&redirect_counter=1&cm2rm=sn-5hnell7s&req_id=dd6ad5e22b11a3ee&cms_redirect=yes&cmsv=e&mh=sz&mip=95.155.2.147&mm=34&mn=sn-4g5lznlz&ms=ltu&mt=1696780611&mv=m&mvi=3&pl=19&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AK1ks_kwRgIhAIxKXeFsQYx70Cn3lziMDw6FU9jzu4GVj3_jZt1aJ2q4AiEAyqdrv17nIXQyokV5R_fch3TWANvFEg3jsm4vODTofDU%3D" type="video/mp4" >
   </video>
 
   <div class="videoplayer__controls-container pb-14 poa b-0">
@@ -27,7 +27,7 @@
         [name]="isVideoPlaying ? icon.Icons.pause : icon.Icons.play"
         (click)="toggleVideo()"
       />
-      <div class="videoplayer__controls-time pl-32">{{ progress | date: 'HH:mm:ss' }} / {{ duration | date: 'HH:mm:ss' }}</div>
+      <div class="videoplayer__controls-time pl-32">{{ progressHHMMSS }} / {{ durationHHMMSS }}</div>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { Subject, fromEvent, takeUntil, tap } from 'rxjs';
-import { Icons } from 'src/app/providers';
+import { Icons, secondsToHHMMSS } from 'src/app/providers';
 
 @Component({
   selector: 'app-videoplayer',
@@ -17,17 +17,31 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
 
   isVideoPlaying = false;
   progress = 0;
+  progressHHMMSS = '00:00:00';
   duration = 0;
+  durationHHMMSS = '00:00:00';
 
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
+    this.canPlay();
     this.watchVideo();
   }
 
   ngOnDestroy(): void {
     this.destroyStream$.next();
     this.destroyStream$.complete();
+  }
+
+  private canPlay() {
+    fromEvent(this.video.nativeElement, 'canplay').pipe(
+      takeUntil(this.destroyStream$),
+      tap(() => {
+        this.durationHHMMSS = secondsToHHMMSS(this.video.nativeElement.duration);
+
+        this.cdr.detectChanges();
+      })
+    ).subscribe();
   }
 
   private watchVideo() {
@@ -40,6 +54,8 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
           this.progress = target.currentTime;
           this.duration = target.duration;
         }
+
+        this.progressHHMMSS = secondsToHHMMSS(this.progress);
 
         if (this.progress === this.duration) {
           this.isVideoPlaying = false;
