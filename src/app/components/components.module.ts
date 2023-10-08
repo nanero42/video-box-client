@@ -4,6 +4,7 @@ import { HeaderComponent } from './header';
 import { IconComponent } from './icon';
 import { ProfileComponent } from './profile';
 import { ButtonComponent } from './button';
+import { InputComponent } from './input';
 
 
 
@@ -13,6 +14,7 @@ import { ButtonComponent } from './button';
     IconComponent,
     ProfileComponent,
     ButtonComponent,
+    InputComponent,
   ],
   imports: [
     CommonModule
@@ -22,6 +24,7 @@ import { ButtonComponent } from './button';
     IconComponent,
     ProfileComponent,
     ButtonComponent,
+    InputComponent,
   ],
 })
 export class ComponentsModule { }
