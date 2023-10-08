@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Icons } from 'src/app/providers';
 
 @Component({
   selector: 'app-videos',
@@ -7,6 +6,4 @@ import { Icons } from 'src/app/providers';
   styleUrls: ['./videos.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VideosComponent {
-  readonly Icons = Icons;
-}
+export class VideosComponent {}
