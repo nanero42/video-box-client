@@ -1,7 +1,7 @@
 export function secondsToHHMMSS(totalSeconds: number) {
-  let hours: any = Math.round(totalSeconds / 3600);
-  let minutes: any = Math.round((totalSeconds - (hours * 3600)) / 60);
-  let seconds: any = Math.round(totalSeconds - (hours * 3600) - (minutes * 60));
+  let hours: any = Math.floor(totalSeconds / 3600);
+  let minutes: any = Math.floor((totalSeconds - (hours * 3600)) / 60);
+  let seconds: any = Math.floor(totalSeconds - (hours * 3600) - (minutes * 60));
 
   // Padding the values to ensure they are two digits
   if (hours < 10) { hours = "0" + hours; }

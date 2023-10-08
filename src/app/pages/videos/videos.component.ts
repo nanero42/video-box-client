@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { VideoService } from 'src/app/providers';
+import { ReactionService, VideoService } from 'src/app/providers';
 
 @Component({
   selector: 'app-videos',
@@ -13,15 +13,18 @@ export class VideosComponent implements OnInit, OnDestroy {
   private destroyStream$ = new Subject<void>();
 
   itemId = this.route.snapshot.params['id'];
-  item$ = this.videoService.item$;
+  videoItem$ = this.videoService.item$;
+  reactionItem$ = this.reactionService.item$;
 
   constructor (
     private route: ActivatedRoute,
     private videoService: VideoService,
+    private reactionService: ReactionService,
   ) {}
 
   ngOnInit(): void {
     this.loadVideo();
+    this.loadReaction();
   }
 
   ngOnDestroy(): void {
@@ -31,6 +34,12 @@ export class VideosComponent implements OnInit, OnDestroy {
 
   private loadVideo() {
     this.videoService.loadVideo$(this.route).pipe(
+      takeUntil(this.destroyStream$),
+    ).subscribe();
+  }
+
+  private loadReaction() {
+    this.reactionService.loadVideo$(this.route).pipe(
       takeUntil(this.destroyStream$),
     ).subscribe();
   }

@@ -4,6 +4,16 @@
   <div class="pt-18"></div>
 
   <ul class="reactions__list">
-    <app-reaction *ngFor="let item of [1, 2, 3, 4, 5]" />
+    <app-reaction
+      *ngFor="let item of reactions"
+      [id]="item.id"
+      [videoId]="item.videoId"
+      [author]="item.author"
+      [postedDate]="item.postedDate"
+      [createdDate]="item.createdDate"
+      [timeframe]="item.timeframe"
+      [imageUrl]="item.imageUrl"
+      [type]="item.type"
+    />
   </ul>
 </div>

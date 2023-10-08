@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ReactionType, secondsToHHMMSS } from 'src/app/providers';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { Author, ReactionType, secondsToHHMMSS } from 'src/app/providers';
 
 @Component({
   selector: 'app-reaction',
@@ -7,10 +7,21 @@ import { ReactionType, secondsToHHMMSS } from 'src/app/providers';
   styleUrls: ['./reaction.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ReactionComponent {
-  reactionType = ReactionType.star;
-  reactionUrl = 'https://media.istockphoto.com/id/1035676256/photo/background-of-galaxy-and-stars.jpg?s=2048x2048&w=is&k=20&c=XAFzMrxYXcR3XR3pvSbovXWxH8CD3q9fPkP-Jnf3qF8=';
-  reactionDate = new Date();
-  reactionAuthor = 'Eduard created a snapshot';
-  reactionTime = secondsToHHMMSS(13 * 60 * 66);
+export class ReactionComponent implements OnChanges {
+  @Input() id = '';
+  @Input() videoId = '';
+  @Input() author: Author;
+  @Input() postedDate?: Date = new Date();
+  @Input() createdDate?: Date = new Date();
+  @Input() timeframe = 0;
+  @Input() imageUrl?: string = '';
+  @Input() type = ReactionType.star;
+
+  readonly secondsToHHMMSS = secondsToHHMMSS;
+
+  ngOnChanges(): void {
+    console.log(this.timeframe);
+
+    console.log(secondsToHHMMSS(this.timeframe));
+  }
 }

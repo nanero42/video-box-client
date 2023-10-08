@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Reaction } from 'src/app/providers';
 
 @Component({
   selector: 'app-reactions',
@@ -6,4 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./reactions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ReactionsComponent {}
+export class ReactionsComponent {
+  @Input() reactions: Reaction[] | null;
+}

@@ -4,7 +4,7 @@ export enum Icons {
   gridStyleCompact = 'gridStyleCompact',
   play = 'play',
   pause = 'pause',
-  camera = 'camera',
+  snapshot = 'snapshot',
   star = 'star',
 }
 
@@ -21,5 +21,5 @@ export enum KeyboardCode {
 
 export enum ReactionType {
   star = Icons.star,
-  snapshot = Icons.camera,
+  snapshot = Icons.snapshot,
 }

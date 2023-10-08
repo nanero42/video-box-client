@@ -3,7 +3,8 @@
 <div
   class="container-min-max-384-800"
   *ngIf="{
-    item: item$ | async
+    item: videoItem$ | async,
+    reactionItem: reactionItem$ | async
   } as state"
 >
   <div class="videos__container df">
@@ -18,7 +19,7 @@
       <app-button
         #button
         [category]="button.ButtonCategory.secondaryWithIcon"
-        [icon]="button.Icons.camera"
+        [icon]="button.Icons.snapshot"
         [title]="'Snapshot'"
         [fillPath]="'#000'"
       />
@@ -41,5 +42,5 @@
 
   <div class="pt-40"></div>
 
-  <app-reactions />
+  <app-reactions [reactions]="reactionItem$ | async" />
 </div>

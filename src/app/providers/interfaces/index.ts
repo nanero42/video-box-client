@@ -1,4 +1,4 @@
-import { Icons } from "../enums";
+import { Icons, ReactionType } from "../enums";
 
 export interface Video {
   id: string;
@@ -33,12 +33,14 @@ export interface Video {
 }
 
 export interface Reaction {
-  id: string
-  videoId: string
-  author: Author
-  postedDate: string
-  timeframe: number
-  type: string
+  id: string;
+  videoId: string;
+  author: Author;
+  postedDate?: Date;
+  createdDate?: Date;
+  timeframe: number;
+  imageUrl?: string;
+  type: ReactionType;
 }
 
 export interface Author {
