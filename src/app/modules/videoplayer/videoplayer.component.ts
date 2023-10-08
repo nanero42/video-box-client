@@ -22,16 +22,23 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
+    this.watchVideo();
+  }
+
+  ngOnDestroy(): void {
+    this.destroyStream$.next();
+    this.destroyStream$.complete();
+  }
+
+  private watchVideo() {
     fromEvent(this.video.nativeElement, 'timeupdate').pipe(
       takeUntil(this.destroyStream$),
-      tap((time) => {
-        if (!time.target) {
-          return;
-        }
+      tap(({ target }) => {
+        if (!target) return;
 
-        if (time.target instanceof HTMLMediaElement) {
-          this.progress = time.target.currentTime;
-          this.duration = time.target.duration;
+        if (target instanceof HTMLMediaElement) {
+          this.progress = target.currentTime;
+          this.duration = target.duration;
         }
 
         if (this.progress === this.duration) {
@@ -43,11 +50,6 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
         this.cdr.detectChanges();
       }),
     ).subscribe();
-  }
-
-  ngOnDestroy(): void {
-    this.destroyStream$.next();
-    this.destroyStream$.complete();
   }
 
   toggleVideo() {
