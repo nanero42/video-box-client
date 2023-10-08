@@ -1,0 +1,27 @@
+<li class="reaction__item cup">
+  <!-- icon -->
+  <div class="reaction__icon aic jcc pr-26 pl-20">
+    <app-icon #icon [name]="icon.Icons[reactionType]" [fillPath]="'#8D8D8D'"/>
+  </div>
+
+  <!-- time -->
+  <div class="reaction__time aic jcc pr-40 text-wrap-nowrap">{{ reactionTime }}</div>
+
+  <!-- author -->
+  <div class="reaction__author aic jcc text-wrap-nowrap pr-20">{{ reactionAuthor }}</div>
+
+  <!-- date -->
+  <div class="reaction__date aic jcc">({{ reactionDate | date:'MM/dd/yyy' }})</div>
+
+  <!-- img -->
+  <div class="reaction__img-container aic jcfe pt-6 pr-12 pb-6">
+    <div class="reaction__img aic jcc">
+      <img
+        src="{{reactionUrl}}"
+        alt="Reaction"
+        [style.width]="'96px'"
+        [style.height]="'54px'"
+      >
+    </div>
+  </div>
+</li>

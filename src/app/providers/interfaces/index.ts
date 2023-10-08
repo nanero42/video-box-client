@@ -32,6 +32,15 @@ export interface Video {
   previewUrl: string
 }
 
+export interface Reaction {
+  id: string
+  videoId: string
+  author: Author
+  postedDate: string
+  timeframe: number
+  type: string
+}
+
 export interface Author {
   id: string
   name: string

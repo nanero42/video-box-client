@@ -1,0 +1,42 @@
+:host { display: contents; }
+
+.reaction__item {
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 5fr;
+  grid-template-areas:
+    "icon time author date img"
+}
+
+.reaction__item:hover {
+  background-color: var(--color-blue-thin);
+}
+
+.reaction__icon {
+  grid-area: icon;
+}
+
+.reaction__time {
+  font-weight: 700;
+  grid-area: time;
+}
+
+.reaction__date {
+  color: var(--color-gray-medium);
+  grid-area: date;
+}
+
+.reaction__author {
+  color: var(--color-gray-medium);
+  grid-area: author;
+}
+
+.reaction__img-container {
+  grid-area: img;
+}
+
+.reaction__img {
+  border-radius: 8px;
+  overflow: hidden;
+  object-fit: cover;
+}

@@ -18,3 +18,8 @@ export enum KeyboardCode {
   ArrowLeft = 'ArrowLeft',
   ArrowRight = 'ArrowRight',
 }
+
+export enum ReactionType {
+  star = Icons.star,
+  snapshot = Icons.camera,
+}
