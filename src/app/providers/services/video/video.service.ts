@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, finalize, takeUntil, tap } from 'rxjs';
-import { Video } from '../../interfaces';
 import { ActivatedRoute } from '@angular/router';
+import { Subject, tap } from 'rxjs';
+import { Reaction, Video } from '../../interfaces';
+import { takeScreenshot } from '../../utils';
 
 @Injectable({
   providedIn: 'root'

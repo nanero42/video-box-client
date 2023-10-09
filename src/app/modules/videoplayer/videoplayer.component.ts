@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, Inject, Input, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, EventEmitter, Inject, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Subject, fromEvent, takeUntil, tap } from 'rxjs';
 import { Icons, KeyboardCode, secondsToHHMMSS } from 'src/app/providers';
 
@@ -9,16 +9,24 @@ import { Icons, KeyboardCode, secondsToHHMMSS } from 'src/app/providers';
   styleUrls: ['./videoplayer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VideoplayerComponent implements DoCheck, AfterViewInit, OnDestroy {
+export class VideoplayerComponent implements AfterViewInit, OnDestroy {
+  private destroyStream$ = new Subject<void>();
+  private _videoTimeframe = { videoTimeframe: 0 };
+
+  readonly Icons = Icons;
+
   @ViewChild('video') video: ElementRef<HTMLVideoElement>;
   @ViewChild('line') line: ElementRef<HTMLDivElement>;
 
   @Input() url?: string = '';
-  @Input() videoTimeframe = 0;
+  @Input()
+  set videoTimeframe(videoTimeframe: { videoTimeframe: number }) {
+    this._videoTimeframe.videoTimeframe = videoTimeframe.videoTimeframe;
+    this.rewindToPointAndPuse(this?.video?.nativeElement);
+  }
+  get videoTimeframe() { return this._videoTimeframe; }
 
-  readonly Icons = Icons;
-
-  private destroyStream$ = new Subject<void>();
+  @Output() getVideoElement = new EventEmitter<HTMLVideoElement>();
 
   isVideoPlaying = false;
   progress = 0;
@@ -31,30 +39,29 @@ export class VideoplayerComponent implements DoCheck, AfterViewInit, OnDestroy {
     @Inject(DOCUMENT) private document: Document,
   ) {}
 
-  ngDoCheck(): void {
-    const video = this?.video?.nativeElement;
-
-    if (video) {
-      const timeframeInSeconds = this.videoTimeframe * 10;
-
-      video.currentTime = timeframeInSeconds;
-      this.progress = timeframeInSeconds;
-      this.progressHHMMSS = secondsToHHMMSS(timeframeInSeconds);
-    }
-  }
-
   ngAfterViewInit(): void {
-    this.initVideoDuration();
-    this.initVideoProgress();
+    this.initVideoProgressAndDuration();
     this.toggleVideoOnSpacePressed();
     this.backVideoOnFiveSecond();
     this.forwardVideoOnFiveSecond();
     this.rewindVideoToPoint();
+
+    this.getVideoElement.emit(this.video.nativeElement);
   }
 
   ngOnDestroy(): void {
     this.destroyStream$.next();
     this.destroyStream$.complete();
+  }
+
+  private rewindToPointAndPuse(video: HTMLVideoElement) {
+    if (!video) return;
+
+    this.progress = this.videoTimeframe.videoTimeframe;
+    video.currentTime = this.videoTimeframe.videoTimeframe;
+    this.progressHHMMSS = secondsToHHMMSS(this.videoTimeframe.videoTimeframe);
+    video.pause();
+    this.isVideoPlaying = false;
   }
 
   private toggleVideoOnSpacePressed() {
@@ -96,19 +103,7 @@ export class VideoplayerComponent implements DoCheck, AfterViewInit, OnDestroy {
     ).subscribe();
   }
 
-  private initVideoDuration() {
-    fromEvent(this.video.nativeElement, 'canplay').pipe(
-      takeUntil(this.destroyStream$),
-      tap(() => {
-        this.duration = this.video.nativeElement.duration;
-        this.durationHHMMSS = secondsToHHMMSS(this.video.nativeElement.duration);
-
-        this.cdr.detectChanges();
-      })
-    ).subscribe();
-  }
-
-  private initVideoProgress() {
+  private initVideoProgressAndDuration() {
     fromEvent(this.video.nativeElement, 'timeupdate').pipe(
       takeUntil(this.destroyStream$),
       tap(({ target }) => {
@@ -116,11 +111,13 @@ export class VideoplayerComponent implements DoCheck, AfterViewInit, OnDestroy {
 
         if (target instanceof HTMLMediaElement) {
           this.progress = target.currentTime;
+          this.duration = target.duration;
         }
 
+        this.durationHHMMSS = secondsToHHMMSS(this.video.nativeElement.duration);
         this.progressHHMMSS = secondsToHHMMSS(this.progress);
 
-        if (this.progress === this.duration) {
+        if (this.progress >= this.duration) {
           this.isVideoPlaying = false;
           this.progress = 0;
           this.duration = 0;
@@ -150,10 +147,6 @@ export class VideoplayerComponent implements DoCheck, AfterViewInit, OnDestroy {
   }
 
   toggleVideo() {
-    if (!this.video) {
-      return;
-    }
-
     if (!this.isVideoPlaying) {
       this.video.nativeElement.play();
     } else {
@@ -161,5 +154,7 @@ export class VideoplayerComponent implements DoCheck, AfterViewInit, OnDestroy {
     }
 
     this.isVideoPlaying = !this.isVideoPlaying;
+
+    this.cdr.detectChanges();
   }
 }

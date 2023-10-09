@@ -1,14 +1,14 @@
-<div class="pt-24 por">
-  <video #video class="videoplayer">
+<div class="pt-24"></div>
+<div class="por">
+  <video #video class="videoplayer" crossorigin="anonymous">
     <source *ngIf="url" [src]="url" type="video/mp4" >
   </video>
 
+  <div class="videoplayer__toggle-video-on-click" (click)="toggleVideo()"></div>
+
   <div class="videoplayer__controls-container pb-14 poa b-0">
     <div class="videoplayer__controls-line-container">
-      <div
-        #line
-        class="videoplayer__controls-line"
-      >
+      <div #line class="videoplayer__controls-line">
         <div
           *ngIf="progress && duration"
           class="videoplayer__controls-line videoplayer__controls-line_filled"

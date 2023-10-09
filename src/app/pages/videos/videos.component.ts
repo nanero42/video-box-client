@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { ReactionService, VideoService } from 'src/app/providers';
+import { Reaction, ReactionService, ReactionType, VideoService, takeScreenshot } from 'src/app/providers';
 
 @Component({
   selector: 'app-videos',
@@ -12,9 +12,12 @@ import { ReactionService, VideoService } from 'src/app/providers';
 export class VideosComponent implements OnInit, OnDestroy {
   private destroyStream$ = new Subject<void>();
 
-  itemId = this.route.snapshot.params['id'];
+  currentVideoElement: HTMLVideoElement;
+  videoId = this.route.snapshot.params['id'];
   videoItem$ = this.videoService.item$;
   reactionItem$ = this.reactionService.item$;
+
+  Object = Object;
 
   videoTimeframe = 0;
 
@@ -41,7 +44,34 @@ export class VideosComponent implements OnInit, OnDestroy {
   }
 
   private loadReaction() {
-    this.reactionService.loadVideo$(this.route).pipe(
+    this.reactionService.loadReactions$(this.route).pipe(
+      takeUntil(this.destroyStream$),
+    ).subscribe();
+  }
+
+  takeSnapshot() {
+    console.log(this.currentVideoElement.currentTime);
+
+    const reaction: Reaction = {
+      videoId: this.videoId,
+      type: ReactionType.snapshot,
+      timeframe: this.currentVideoElement.currentTime,
+      dataUri: takeScreenshot(this.currentVideoElement),
+    };
+
+    this.reactionService.saveReaction$(reaction).pipe(
+      takeUntil(this.destroyStream$),
+    ).subscribe();
+  }
+
+  star() {
+    const reaction: Reaction = {
+      videoId: this.videoId,
+      type: ReactionType.star,
+      timeframe: this.currentVideoElement.currentTime,
+    };
+
+    this.reactionService.saveReaction$(reaction).pipe(
       takeUntil(this.destroyStream$),
     ).subscribe();
   }

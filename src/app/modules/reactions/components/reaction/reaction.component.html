@@ -1,14 +1,14 @@
 <li class="reaction__item cup">
   <!-- icon -->
   <div class="reaction__icon aic jcc pr-26 pl-20">
-    <app-icon #icon [name]="icon.Icons[type]" [fillPath]="'#8D8D8D'"/>
+    <app-icon *ngIf="type" #icon [name]="icon.Icons[type]" [fillPath]="'#8D8D8D'"/>
   </div>
 
   <!-- time -->
-  <div class="reaction__time aic jcc pr-40 text-wrap-nowrap">{{ secondsToHHMMSS(timeframe) }}</div>
+  <div *ngIf="timeframe" class="reaction__time aic jcc pr-40 text-wrap-nowrap">{{ secondsToHHMMSS(timeframe) }}</div>
 
   <!-- author -->
-  <div class="reaction__author aic jcc text-wrap-nowrap pr-20">{{ author.name }}</div>
+  <div class="reaction__author aic jcc text-wrap-nowrap pr-20">{{ author?.name }}</div>
 
   <!-- date -->
   <div class="reaction__date aic jcc">({{ (postedDate || createdDate) | date:'MM/dd/yyy' }})</div>

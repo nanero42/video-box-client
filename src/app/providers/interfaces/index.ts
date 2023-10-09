@@ -33,14 +33,15 @@ export interface Video {
 }
 
 export interface Reaction {
-  id: string;
-  videoId: string;
-  author: Author;
+  id?: string;
+  videoId?: string;
+  author?: Author;
   postedDate?: Date;
   createdDate?: Date;
-  timeframe: number;
+  timeframe?: number;
   imageUrl?: string;
-  type: ReactionType;
+  type?: ReactionType;
+  dataUri?: string;
 }
 
 export interface Author {

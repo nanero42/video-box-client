@@ -12,11 +12,19 @@ export class ReactionService {
 
   constructor(private http: HttpClient) {}
 
-  loadVideo$(route: ActivatedRoute) {
+  loadReactions$(route: ActivatedRoute) {
     const id = route.snapshot.params['id'];
 
     return this.http.get<Reaction[]>(`http://localhost:3000/api/videos/${id}/reactions`).pipe(
       tap((item) => this.item$.next(item)),
     );
+  }
+
+  saveReaction$(item: Reaction) {
+    console.log(item);
+
+    return this.http.post<Reaction[]>(`http://localhost:3000/api/videos/${item.videoId}/reactions`, item).pipe(
+      tap((item) => this.item$.next(item)),
+    )
   }
 }

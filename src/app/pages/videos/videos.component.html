@@ -12,9 +12,11 @@
     <app-button [title]="'Save'" />
   </div>
 
+  <!-- [videoTimeframe]="{videoTimeframe: videoTimeframe.videoTimeframe}" -->
   <app-videoplayer
     [url]="state.item?.url"
-    [videoTimeframe]="videoTimeframe"
+    [videoTimeframe]="Object.create({videoTimeframe: videoTimeframe})"
+    (getVideoElement)="currentVideoElement = $event"
   />
 
   <div class="pt-16 df jcsb">
@@ -25,6 +27,7 @@
         [icon]="button.Icons.snapshot"
         [title]="'Snapshot'"
         [fillPath]="'#000'"
+        (click)="takeSnapshot()"
       />
 
       <span class="pr-16"></span>
@@ -35,6 +38,7 @@
         [icon]="button.Icons.star"
         [title]="'Star'"
         [fillPath]="'#000'"
+        (click)="star()"
       />
     </div>
 

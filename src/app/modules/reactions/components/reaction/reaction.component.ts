@@ -8,14 +8,14 @@ import { Author, ReactionType, secondsToHHMMSS } from 'src/app/providers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReactionComponent {
-  @Input() id = '';
-  @Input() videoId = '';
-  @Input() author: Author;
-  @Input() postedDate?: Date = new Date();
-  @Input() createdDate?: Date = new Date();
-  @Input() timeframe = 0;
-  @Input() imageUrl?: string = '';
-  @Input() type = ReactionType.star;
+  @Input() id?: string;
+  @Input() videoId?: string;
+  @Input() author?: Author;
+  @Input() postedDate?: Date;
+  @Input() createdDate?: Date;
+  @Input() timeframe?: number;
+  @Input() imageUrl?: string;
+  @Input() type?: ReactionType;
 
   readonly secondsToHHMMSS = secondsToHHMMSS;
 }
