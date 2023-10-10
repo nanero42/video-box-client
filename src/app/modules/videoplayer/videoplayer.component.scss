@@ -34,6 +34,12 @@
   padding-bottom: 24px;
 }
 
+.videoplayer__controls-line,
+.videoplayer__controls-circle,
+.videoplayer__controls-circle {
+  transition: height 0.15s ease-out;
+}
+
 .videoplayer__controls-line {
   position: relative;
   height: 4px;
