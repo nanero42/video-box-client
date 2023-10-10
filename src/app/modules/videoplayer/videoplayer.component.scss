@@ -41,6 +41,22 @@
   border-radius: 10px;
 }
 
+.videoplayer__controls-line:hover {
+  .videoplayer__controls-line_filled {
+    height: 10px;
+    border-radius: 4px;
+  }
+
+  .videoplayer__controls-circle {
+    width: 12px;
+    height: 26px;
+    top: -70%;
+  }
+
+  height: 10px;
+  border-radius: 4px;
+}
+
 .videoplayer__controls-line_filled {
   background-color: var(--color-white);
 }
