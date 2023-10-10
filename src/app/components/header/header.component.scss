@@ -1,6 +1,7 @@
 :host { display: contents; }
 
 .header {
+  z-index: 99999;
   height: 80px;
   position: sticky;
   top: 0;
