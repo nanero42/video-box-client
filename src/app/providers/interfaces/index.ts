@@ -49,3 +49,7 @@ export interface Author {
   name: string
   pictureUrl: string
 }
+
+export interface videoTimeframe {
+  videoTimeframe: number | null;
+}

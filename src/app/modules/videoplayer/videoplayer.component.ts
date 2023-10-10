@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, EventEmitter, Inject, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Subject, fromEvent, takeUntil, tap } from 'rxjs';
-import { Icons, KeyboardCode, secondsToHHMMSS } from 'src/app/providers';
+import { Icons, KeyboardCode, secondsToHHMMSS, videoTimeframe } from 'src/app/providers';
 
 @Component({
   selector: 'app-videoplayer',
@@ -11,7 +11,7 @@ import { Icons, KeyboardCode, secondsToHHMMSS } from 'src/app/providers';
 })
 export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   private destroyStream$ = new Subject<void>();
-  private _videoTimeframe = { videoTimeframe: 0 };
+  private _videoTimeframe: videoTimeframe = { videoTimeframe: null };
 
   readonly Icons = Icons;
 
@@ -20,7 +20,9 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
 
   @Input() url?: string = '';
   @Input()
-  set videoTimeframe(videoTimeframe: { videoTimeframe: number }) {
+  set videoTimeframe(videoTimeframe: videoTimeframe) {
+    console.log(videoTimeframe.videoTimeframe);
+
     this._videoTimeframe.videoTimeframe = videoTimeframe.videoTimeframe;
     this.rewindToPointAndPuse(this?.video?.nativeElement);
   }
@@ -55,7 +57,7 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   }
 
   private rewindToPointAndPuse(video: HTMLVideoElement) {
-    if (!video) return;
+    if (!video || !this.videoTimeframe.videoTimeframe) return;
 
     this.progress = this.videoTimeframe.videoTimeframe;
     video.currentTime = this.videoTimeframe.videoTimeframe;
