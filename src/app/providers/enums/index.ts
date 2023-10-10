@@ -6,6 +6,7 @@ export enum Icons {
   pause = 'pause',
   snapshot = 'snapshot',
   star = 'star',
+  arrowRight = 'arrowRight',
 }
 
 export enum ButtonCategory {
