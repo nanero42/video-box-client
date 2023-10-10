@@ -55,10 +55,10 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   }
 
   private rewindToPointAndPuse(video: HTMLVideoElement) {
-    if (!video || !this.videoTimeframe.videoTimeframe) return;
+    if (!video) return;
 
-    this.progress = this.videoTimeframe.videoTimeframe;
-    video.currentTime = this.videoTimeframe.videoTimeframe;
+    this.progress = this.videoTimeframe.videoTimeframe || 0;
+    video.currentTime = this.videoTimeframe.videoTimeframe || 0;
     this.progressHHMMSS = secondsToHHMMSS(this.videoTimeframe.videoTimeframe);
     video.pause();
     this.isVideoPlaying = false;
