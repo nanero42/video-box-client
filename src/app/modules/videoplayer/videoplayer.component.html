@@ -6,7 +6,7 @@
 
   <div class="videoplayer__toggle-video-on-click" (click)="toggleVideo()"></div>
 
-  <div class="videoplayer__controls-container pb-14 poa b-0">
+  <div class="videoplayer__controls-container pb-24 poa b-0">
     <div class="videoplayer__controls-line-container">
       <div #line class="videoplayer__controls-line">
         <div
@@ -25,11 +25,13 @@
     </div>
 
     <div class="videoplayer__controls aic">
-      <app-icon
-        #icon
-        [name]="isVideoPlaying ? icon.Icons.pause : icon.Icons.play"
-        (click)="toggleVideo()"
-      />
+      <div class="videoplayer__controls-toggle-button aic jcc cup">
+        <app-icon
+          #icon
+          [name]="isVideoPlaying ? icon.Icons.pause : icon.Icons.play"
+          (click)="toggleVideo()"
+        />
+      </div>
       <div class="videoplayer__controls-time pl-32">{{ progressHHMMSS }} / {{ durationHHMMSS }}</div>
     </div>
   </div>
