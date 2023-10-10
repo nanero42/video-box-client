@@ -8,7 +8,17 @@ import { Reaction } from 'src/app/providers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReactionsComponent {
-  @Input() reactions: Reaction[] | null;
+  private _reactions: Reaction[] | null;
+
+  @Input()
+  set reactions(reactions: Reaction[] | null) {
+    if (!reactions?.length) return;
+
+    this._reactions = reactions.sort((a: any, b: any) => a.timeframe - b.timeframe);
+  }
+  get reactions() {
+    return this._reactions;
+  }
 
   @Output() onVideoTimeframe = new EventEmitter<number>();
 }
