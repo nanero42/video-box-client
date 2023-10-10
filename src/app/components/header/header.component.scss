@@ -1,5 +1,9 @@
+:host { display: contents; }
+
 .header {
   height: 80px;
+  position: sticky;
+  top: 0;
   background-color: var(--color-main);
   color: var(--color-white);
 }
