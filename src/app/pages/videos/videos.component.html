@@ -46,8 +46,11 @@
 
   <div class="pt-40"></div>
 
-  <app-reactions
-    [reactions]="reactionItem$ | async"
-    (onVideoTimeframe)="videoTimeframe = $event"
-  />
+  <ng-container *ngIf="reactionItem$ | async as reactions">
+    <app-reactions
+      *ngIf="reactions?.length"
+      [reactions]="reactions"
+      (onVideoTimeframe)="videoTimeframe = $event"
+    />
+  </ng-container>
 </div>
