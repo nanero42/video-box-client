@@ -21,8 +21,6 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   @Input() url?: string = '';
   @Input()
   set videoTimeframe(videoTimeframe: videoTimeframe) {
-    console.log(videoTimeframe.videoTimeframe);
-
     this._videoTimeframe.videoTimeframe = videoTimeframe.videoTimeframe;
     this.rewindToPointAndPuse(this?.video?.nativeElement);
   }
