@@ -1,9 +1,8 @@
-export function secondsToHHMMSS(totalSeconds: number) {
+export function secondsToHHMMSS(totalSeconds: any) {
   let h: any = Math.floor(totalSeconds / 3600);
   let m: any = Math.floor((totalSeconds - (h * 3600)) / 60);
   let s: any = Math.floor(totalSeconds - (h * 3600) - (m * 60));
 
-  // Padding the values to ensure they are two digits
   if (h < 10) { h = '0' + h; }
   if (m < 10) { m = '0' + m; }
   if (s < 10) { s = '0' + s; }
