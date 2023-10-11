@@ -13,6 +13,7 @@
   <app-videoplayer
     [url]="state.item?.url"
     [videoTimeframe]="videoTimeframe"
+    [starred]="starred"
     (getVideoElement)="currentVideoElement = $event"
     (getCurrentVideoTime)="currentVideoTime = $event"
   />

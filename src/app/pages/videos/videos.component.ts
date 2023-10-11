@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Reaction, ReactionService, ReactionType, VideoService, takeScreenshot } from 'src/app/providers';
@@ -20,10 +20,13 @@ export class VideosComponent implements OnInit, OnDestroy {
 
   videoTimeframe = 0;
 
+  starred = false;
+
   constructor (
     private route: ActivatedRoute,
     private videoService: VideoService,
     private reactionService: ReactionService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -64,6 +67,14 @@ export class VideosComponent implements OnInit, OnDestroy {
   }
 
   star() {
+    this.starred = true;
+
+    setTimeout(() => {
+      this.starred = false;
+
+      this.cdr.detectChanges();
+    }, 1000);
+
     const reaction: Reaction = {
       videoId: this.videoId,
       type: ReactionType.star,

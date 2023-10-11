@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, EventEmitter, Inject, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { Subject, fromEvent, takeUntil, tap } from 'rxjs';
+import { BehaviorSubject, Subject, fromEvent, takeUntil, tap } from 'rxjs';
 import { Icons, KeyboardCode, secondsToHHMMSS, videoTimeframe } from 'src/app/providers';
 
 @Component({
@@ -17,7 +17,9 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('video') video: ElementRef<HTMLVideoElement>;
   @ViewChild('line') line: ElementRef<HTMLDivElement>;
+  @ViewChild('starIcon', { read: ElementRef<HTMLOrSVGElement> }) starIcon: ElementRef<HTMLOrSVGElement>;
 
+  @Input() starred = false;
   @Input() url?: string = '';
   @Input()
   set videoTimeframe(videoTimeframe: number | null) {
