@@ -9,6 +9,7 @@ import { Icons } from 'src/app/providers';
 })
 export class VideoComponent {
   @Input() gridStyle: Icons = Icons.gridStyleCompact;
+  @Input() id = '';
   @Input() previewUrl = '';
   @Input() title = '';
   @Input() createdDate: Date = new Date();

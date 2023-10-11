@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Icons } from 'src/app/providers';
+import { Icons, ReactionType } from 'src/app/providers';
 
 @Component({
   selector: 'app-icon',
@@ -14,5 +14,6 @@ export class IconComponent {
   @Input() fillSvg?: string = '#FFF';
   @Input() fillPath?: string = '#FFF';
 
-  Icons = Icons;
+  readonly Icons = Icons;
+  readonly ReactionType = ReactionType;
 }

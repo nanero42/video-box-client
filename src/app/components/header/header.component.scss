@@ -1,5 +1,15 @@
+:host { display: contents; }
+
 .header {
+  z-index: 99999;
   height: 80px;
+  position: sticky;
+  top: 0;
   background-color: var(--color-main);
   color: var(--color-white);
+}
+
+.header__back-button {
+  color: var(--color-white);
+  border-radius: 4px;
 }

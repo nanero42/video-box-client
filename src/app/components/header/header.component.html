@@ -2,7 +2,16 @@
   <nav class="h-100">
     <ul class="h-100 jcsb">
       <li class="aic pl-20">
-        <app-icon #icon [name]="icon.Icons.logo" [width]="'90px'" [height]="'50px'" />
+        <app-icon *ngIf="(showBackButton$ | async) === false" #icon [name]="icon.Icons.logo" [width]="'90px'" [height]="'50px'" />
+
+        <div
+          *ngIf="showBackButton$ | async"
+          class="p-20 cup aic jcc"
+          (click)="goBack()"
+        >
+          <app-icon #icon [name]="icon.Icons.arrowRight" [width]="'24px'" [height]="'24px'" />
+          <div class="header__back-button pl-18">Back</div>
+        </div>
       </li>
       <li class="aic pr-20">
         <app-profile />

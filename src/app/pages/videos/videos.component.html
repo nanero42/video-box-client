@@ -1,0 +1,60 @@
+<div
+  class="container-min-max-384-800"
+  *ngIf="{
+    item: videoItem$ | async,
+    reactionItem: reactionItem$ | async
+  } as state"
+>
+  <div class="videos__container df">
+    <app-input />
+    <app-button [title]="'Save'" />
+  </div>
+
+  <app-videoplayer
+    [url]="state.item?.url"
+    [videoTimeframe]="videoTimeframe"
+    [starred]="starred"
+    (getVideoElement)="currentVideoElement = $event"
+    (getCurrentVideoTime)="currentVideoTime = $event"
+  />
+
+  <div class="pt-16 df jcsb">
+    <div class="df">
+      <app-button
+        #button
+        [category]="button.ButtonCategory.secondaryWithIcon"
+        [icon]="button.Icons.snapshot"
+        [title]="'Snapshot'"
+        [fillPath]="'#000'"
+        (click)="takeSnapshot()"
+      />
+
+      <span class="pr-16"></span>
+
+      <app-button
+        #button
+        [category]="button.ButtonCategory.secondaryWithIcon"
+        [icon]="button.Icons.star"
+        [title]="'Star'"
+        [fillPath]="'#000'"
+        (click)="star()"
+      />
+    </div>
+
+    <div class="df aic">
+      <app-profile />
+    </div>
+  </div>
+
+  <div class="pt-40"></div>
+
+  <ng-container *ngIf="reactionItem$ | async as reactions">
+    <app-reactions
+      *ngIf="reactions?.length"
+      [currentVideoTime]="currentVideoTime"
+      [currentVideoElement]="currentVideoElement"
+      [reactions]="reactions"
+      (onVideoTimeframe)="videoTimeframe = $event"
+    />
+  </ng-container>
+</div>

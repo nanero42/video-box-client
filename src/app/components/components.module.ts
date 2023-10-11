@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header';
 import { IconComponent } from './icon';
 import { ProfileComponent } from './profile';
+import { ButtonComponent } from './button';
+import { InputComponent } from './input';
 
 
 
@@ -11,6 +13,8 @@ import { ProfileComponent } from './profile';
     HeaderComponent,
     IconComponent,
     ProfileComponent,
+    ButtonComponent,
+    InputComponent,
   ],
   imports: [
     CommonModule
@@ -19,6 +23,8 @@ import { ProfileComponent } from './profile';
     HeaderComponent,
     IconComponent,
     ProfileComponent,
-  ]
+    ButtonComponent,
+    InputComponent,
+  ],
 })
 export class ComponentsModule { }

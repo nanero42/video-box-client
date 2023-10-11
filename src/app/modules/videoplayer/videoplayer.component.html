@@ -1,0 +1,50 @@
+<div class="pt-24"></div>
+<div class="por">
+  <video #video class="videoplayer" crossorigin="anonymous">
+    <source *ngIf="url" [src]="url" type="video/mp4" >
+  </video>
+
+  <div class="videoplayer__toggle-video-on-click" (click)="toggleVideo()"></div>
+
+  <div class="videoplayer__controls-container pb-24 poa b-0">
+    <div class="videoplayer__controls-line-container">
+      <div #line class="videoplayer__controls-line cup">
+        <div
+          *ngIf="progress && duration"
+          class="videoplayer__controls-line videoplayer__controls-line_filled"
+          [style.width.%]="progress / duration * 100"
+        ></div>
+
+        <div
+          *ngIf="progress && duration"
+          class="videoplayer__controls-circle"
+          [style.left.%]="progress / duration * 100"
+          [ngStyle]="{'transform': 'translateX(-8px)'}"
+        ></div>
+      </div>
+    </div>
+
+    <div class="aic jcsb">
+      <div class="videoplayer__controls aic">
+        <div class="videoplayer__controls-toggle-button aic jcc cup">
+          <app-icon
+            #icon
+            [name]="isVideoPlaying ? icon.Icons.pause : icon.Icons.play"
+            (click)="toggleVideo()"
+          />
+        </div>
+        <div class="videoplayer__controls-time pl-32">{{ progressHHMMSS }} / {{ durationHHMMSS }}</div>
+      </div>
+
+      <div
+        class="videoplayer__controls-star por aic jcc"
+        [ngClass]="{
+          'videoplayer__controls-star-transform-animation': starred,
+          'videoplayer__controls-star-transition': starred
+        }"
+      >
+        <app-icon #starIcon [name]="starIcon.Icons.star" />
+      </div>
+    </div>
+  </div>
+</div>
