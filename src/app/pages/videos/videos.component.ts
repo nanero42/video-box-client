@@ -52,8 +52,6 @@ export class VideosComponent implements OnInit, OnDestroy {
   }
 
   takeSnapshot() {
-    console.log(this.currentVideoElement.currentTime);
-
     const reaction: Reaction = {
       videoId: this.videoId,
       type: ReactionType.snapshot,
