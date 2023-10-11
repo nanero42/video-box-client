@@ -67,8 +67,9 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   private toggleVideoOnSpacePressed() {
     fromEvent<KeyboardEvent>(this.document, 'keydown').pipe(
       takeUntil(this.destroyStream$),
-      tap(({ code }) => {
-        if (code === KeyboardCode.Space) {
+      tap((e) => {
+        if (e.code === KeyboardCode.Space) {
+          e.preventDefault();
           this.toggleVideo();
         }
       }),
