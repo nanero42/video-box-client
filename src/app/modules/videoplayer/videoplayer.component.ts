@@ -140,7 +140,7 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
         const xPointInsideLine = xPoint - distanceFromLeftScreenSideToLineLeftSide;
         const xPointInsideLineInt = xPointInsideLine;
 
-        this.video.nativeElement.currentTime = xPointInsideLineInt / lineWidth * this.duration;
+        this.video.nativeElement.currentTime = xPointInsideLineInt / lineWidth * (this.duration || this.video.nativeElement.duration);
 
         this.cdr.detectChanges();
       })
