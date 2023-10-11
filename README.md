@@ -11,7 +11,7 @@ Local angular project version 16.0.3.
 `npm install`
 
 ### how to run
-1. Firstly, start server with `npm run start` command (download server from [here](https://github.com/splyza/video-box-server/tree/main))
+1. Firstly, start server with `npm run start` command (download server from [here](https://github.com/splyza/video-box-server/tree/main)).
 2. Then start client `npm run start`.
 
 ### features
