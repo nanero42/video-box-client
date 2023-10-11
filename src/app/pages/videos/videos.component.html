@@ -12,7 +12,7 @@
 
   <app-videoplayer
     [url]="state.item?.url"
-    [videoTimeframe]="Object.create({videoTimeframe: videoTimeframe})"
+    [videoTimeframe]="videoTimeframe"
     (getVideoElement)="currentVideoElement = $event"
   />
 

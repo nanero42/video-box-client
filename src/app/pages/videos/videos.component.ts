@@ -17,8 +17,6 @@ export class VideosComponent implements OnInit, OnDestroy {
   videoItem$ = this.videoService.item$;
   reactionItem$ = this.reactionService.item$;
 
-  Object = Object;
-
   videoTimeframe = 0;
 
   constructor (

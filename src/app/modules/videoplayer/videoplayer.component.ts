@@ -11,7 +11,7 @@ import { Icons, KeyboardCode, secondsToHHMMSS, videoTimeframe } from 'src/app/pr
 })
 export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   private destroyStream$ = new Subject<void>();
-  private _videoTimeframe: videoTimeframe = { videoTimeframe: null };
+  private _videoTimeframe: number | null;
 
   readonly Icons = Icons;
 
@@ -20,8 +20,8 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
 
   @Input() url?: string = '';
   @Input()
-  set videoTimeframe(videoTimeframe: videoTimeframe) {
-    this._videoTimeframe.videoTimeframe = videoTimeframe.videoTimeframe;
+  set videoTimeframe(videoTimeframe: number | null) {
+    this._videoTimeframe = videoTimeframe;
     this.rewindToPointAndPuse(this?.video?.nativeElement);
   }
   get videoTimeframe() { return this._videoTimeframe; }
@@ -57,9 +57,9 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   private rewindToPointAndPuse(video: HTMLVideoElement) {
     if (!video) return;
 
-    this.progress = this.videoTimeframe.videoTimeframe || 0;
-    video.currentTime = this.videoTimeframe.videoTimeframe || 0;
-    this.progressHHMMSS = secondsToHHMMSS(this.videoTimeframe.videoTimeframe);
+    this.progress = this.videoTimeframe || 0;
+    video.currentTime = this.videoTimeframe || 0;
+    this.progressHHMMSS = secondsToHHMMSS(this.videoTimeframe);
     video.pause();
     this.isVideoPlaying = false;
   }
