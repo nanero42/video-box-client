@@ -27,6 +27,7 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
   get videoTimeframe() { return this._videoTimeframe; }
 
   @Output() getVideoElement = new EventEmitter<HTMLVideoElement>();
+  @Output() getCurrentVideoTime = new EventEmitter<number>();
 
   isVideoPlaying = false;
   progress = 0;
@@ -113,6 +114,7 @@ export class VideoplayerComponent implements AfterViewInit, OnDestroy {
         if (target instanceof HTMLMediaElement) {
           this.progress = target.currentTime;
           this.duration = target.duration;
+          this.getCurrentVideoTime.emit(this.video.nativeElement.currentTime);
         }
 
         this.durationHHMMSS = secondsToHHMMSS(this.video.nativeElement.duration);

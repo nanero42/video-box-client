@@ -1,4 +1,7 @@
-<li class="reaction__item cup">
+<li
+  class="reaction__item cup"
+  [ngClass]="{'reaction__item_highlighted': Math.floor(timeframe) === Math.floor(currentVideoTime)}"
+>
   <!-- icon -->
   <div class="reaction__icon aic jcc pr-26 pl-20">
     <app-icon *ngIf="type" #icon [name]="icon.Icons[type]" [fillPath]="'#8D8D8D'"/>

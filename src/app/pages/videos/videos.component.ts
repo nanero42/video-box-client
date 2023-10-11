@@ -13,6 +13,7 @@ export class VideosComponent implements OnInit, OnDestroy {
   private destroyStream$ = new Subject<void>();
 
   currentVideoElement: HTMLVideoElement;
+  currentVideoTime: number;
   videoId = this.route.snapshot.params['id'];
   videoItem$ = this.videoService.item$;
   reactionItem$ = this.reactionService.item$;

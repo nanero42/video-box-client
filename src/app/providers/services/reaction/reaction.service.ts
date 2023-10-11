@@ -21,8 +21,6 @@ export class ReactionService {
   }
 
   saveReaction$(item: Reaction) {
-    console.log(item);
-
     return this.http.post<Reaction[]>(`http://localhost:3000/api/videos/${item.videoId}/reactions`, item).pipe(
       tap((item) => this.item$.next(item)),
     )

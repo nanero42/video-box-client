@@ -6,12 +6,14 @@
   <ul class="reactions__list">
     <app-reaction
       *ngFor="let item of reactions"
+      [currentVideoElement]="currentVideoElement"
+      [currentVideoTime]="currentVideoTime || 0"
       [id]="item.id"
       [videoId]="item.videoId"
       [author]="item.author"
       [postedDate]="item.postedDate"
       [createdDate]="item.createdDate"
-      [timeframe]="item?.timeframe"
+      [timeframe]="item?.timeframe || 0"
       [imageUrl]="item.imageUrl"
       [type]="item.type"
       (click)="onVideoTimeframe.emit(item.timeframe)"

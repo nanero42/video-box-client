@@ -10,6 +10,8 @@ import { Reaction } from 'src/app/providers';
 export class ReactionsComponent {
   private _reactions: Reaction[] | null;
 
+  @Input() currentVideoElement: HTMLVideoElement | null;
+  @Input() currentVideoTime: number | null;
   @Input()
   set reactions(reactions: Reaction[] | null) {
     if (!reactions?.length) return;
