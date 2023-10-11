@@ -54,9 +54,9 @@
   }
 
   .videoplayer__controls-circle {
+    top: -70%;
     width: 12px;
     height: 26px;
-    top: -70%;
   }
 
   height: 10px;
@@ -75,6 +75,7 @@
 
 .videoplayer__controls-circle {
   position: absolute;
+  top: -150%;
   width: 16px;
   height: 16px;
   border-radius: 16px;
