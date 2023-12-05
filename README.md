@@ -2,6 +2,22 @@
 
 Local angular project version 16.0.3.
 
+## Screenshots
+### home page, default view
+<img width="1677" alt="Screen Shot 2023-12-05 at 5 19 37 PM" src="https://github.com/nanero42/video-box-client/assets/77396570/21155757-55ee-461e-855c-02a29f10a6df">
+
+### home page, alternative view
+<img width="1679" alt="Screen Shot 2023-12-05 at 5 20 51 PM" src="https://github.com/nanero42/video-box-client/assets/77396570/dfdd7c71-9017-4202-af4d-00a5c3fb5b1d">
+
+### home page, video hovered
+<img width="1679" alt="Screen Shot 2023-12-05 at 5 21 25 PM" src="https://github.com/nanero42/video-box-client/assets/77396570/945fe152-4951-4e66-a03a-95c4c28e9d4b">
+
+### video page with snapshots
+<img width="1676" alt="Screen Shot 2023-12-05 at 5 22 35 PM" src="https://github.com/nanero42/video-box-client/assets/77396570/26b17c96-4ea1-45c1-b893-31f06cb34e6b">
+
+### video page with slowly disappearing star icon
+<img width="1295" alt="Screen Shot 2023-12-05 at 5 25 27 PM" src="https://github.com/nanero42/video-box-client/assets/77396570/276bb5e0-040c-4d5f-96bf-e388dda27e87">
+
 ## Setup
 
 ### requirements
